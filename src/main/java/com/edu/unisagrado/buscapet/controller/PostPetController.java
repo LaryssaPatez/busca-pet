@@ -11,7 +11,7 @@ import com.edu.unisagrado.buscapet.model.PostPetEntity;
 import com.edu.unisagrado.buscapet.repository.PostPetRepository;
 
 @RestController
-@RequestMapping("Post") //Quando o front chamar o endpoint "register", irá cair nessa classe
+@RequestMapping("post") //Quando o front chamar o endpoint "post", irá cair nessa classe
 public class PostPetController {
 	
 	@Autowired
