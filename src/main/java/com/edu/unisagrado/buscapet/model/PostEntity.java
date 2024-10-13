@@ -1,5 +1,7 @@
 package com.edu.unisagrado.buscapet.model;
 
+import com.edu.unisagrado.buscapet.controller.PostRequestDTO;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -35,7 +37,19 @@ public class PostEntity {
 	private String district;
 	private String reference;
 	private Boolean status;
-	
+
+	public PostEntity(PostRequestDTO data) {
+		this.petName = data.petName();
+		this.image = data.image();
+		this.city = data.city();
+		this.district = data.district();
+		this.description = data.description();
+		this.reference = data.reference();
+		this.state = data.state();
+		this.status = data.status();
+
+	}
+
 //	public String getSpecies() {
 //		return species;
 //	}
