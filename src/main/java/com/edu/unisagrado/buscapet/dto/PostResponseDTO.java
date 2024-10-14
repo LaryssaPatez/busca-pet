@@ -6,11 +6,11 @@ import com.edu.unisagrado.buscapet.model.PostEntity;
 public record PostResponseDTO(
 
 		Long idPost, String petName, String image, String species, String description,
-		String cep,
+//		String cep,
 		String state, 
 		String city, 
-		String district, 
-		String reference, 
+		String neighborhood, 
+		String street,
 		Boolean status) {
 
 	public PostResponseDTO(PostEntity postEntity) {
@@ -19,11 +19,11 @@ public record PostResponseDTO(
 				postEntity.getImage(), 
 				postEntity.getSpecies(),
 				postEntity.getDescription(), 
-				postEntity.getCep(), 
+//				postEntity.getCep(), 
 				postEntity.getState(), 
 				postEntity.getCity(),
-				postEntity.getDistrict(), 
-				postEntity.getReference(), 
+				postEntity.getNeighborhood(), 
+				postEntity.getStreet(), 
 				postEntity.getStatus());
 	}
 }

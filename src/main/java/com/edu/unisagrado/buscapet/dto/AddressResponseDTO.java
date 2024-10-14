@@ -10,7 +10,7 @@
 //	
 //	private String cep;
 //	private String street;
-//	private String neighborhoods;
+//	private String neighborhood;
 //	private String state;
 //	
 //}

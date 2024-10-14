@@ -67,7 +67,8 @@ public class PostController {
     		postUpdate.setSpecies(data.species());
     		postUpdate.setDescription(data.description());
     		postUpdate.setCity(data.city());
-    		postUpdate.setDistrict(data.district());
+    		postUpdate.setStreet(data.street());
+    		postUpdate.setNeighborhood(data.neighborhood());
     		postUpdate.setState(data.state());
             return ResponseEntity.ok(postUpdate);
         } else {

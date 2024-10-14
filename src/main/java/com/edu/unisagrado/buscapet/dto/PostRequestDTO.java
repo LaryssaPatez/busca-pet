@@ -11,11 +11,11 @@ public record PostRequestDTO(
 		String image, 
 		String species,
 		String description, 
-		String cep,
+//		String cep,
 		String state, 
-		String city,
-		String district, 
-		String reference, 
+		String city, 
+		String neighborhood, 
+		String street,
 		Boolean status) {
 
 }
