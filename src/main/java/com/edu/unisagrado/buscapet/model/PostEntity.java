@@ -1,6 +1,6 @@
 package com.edu.unisagrado.buscapet.model;
 
-import com.edu.unisagrado.buscapet.controller.PostRequestDTO;
+import com.edu.unisagrado.buscapet.dto.PostRequestDTO;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,88 +26,33 @@ import lombok.Setter;
 @EqualsAndHashCode(of = "idPost")
 public class PostEntity {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idPost;
 	private String species; //Será um enum com opções
 	private String petName;
 	private String image;
 	private String description;
-	
-	//Endereço
-	private String state; //Será um enum com opções
-	private String city;
-	private String district;
-	private String reference;
 	private Boolean status;
+
+	//Endereço
+//	private String cep;
+//	private String state;
+//	private String city;
+//	private String district;
+//	private String reference;
 
 	public PostEntity(PostRequestDTO data) {
 		this.petName = data.petName();
 		this.image = data.image();
-		this.city = data.city();
-		this.district = data.district();
-		this.description = data.description();
-		this.reference = data.reference();
-		this.state = data.state();
+//		this.city = data.city();
+//		this.district = data.district();
+//		this.description = data.description();
+//		this.cep = data.cep();
+//		this.reference = data.reference();
+//		this.state = data.state();
 		this.status = data.status();
 
 	}
-
-//	public String getSpecies() {
-//		return species;
-//	}
-//	public void setSpecies(String species) {
-//		this.species = species;
-//	}
-//	public String getPetName() {
-//		return petName;
-//	}
-//	public void setPetName(String petName) {
-//		this.petName = petName;
-//	}
-//	public String getImage() {
-//		return image;
-//	}
-//	public void setImage(String image) {
-//		this.image = image;
-//	}
-//	public String getDescription() {
-//		return description;
-//	}
-//	public void setDescription(String description) {
-//		this.description = description;
-//	}
-//	public String getState() {
-//		return state;
-//	}
-//	public void setState(String state) {
-//		this.state = state;
-//	}
-//	public String getCity() {
-//		return city;
-//	}
-//	public void setCity(String city) {
-//		this.city = city;
-//	}
-//	public String getDistrict() {
-//		return district;
-//	}
-//	public void setDistrict(String district) {
-//		this.district = district;
-//	}
-//	public String getReference() {
-//		return reference;
-//	}
-//	public void setReference(String reference) {
-//		this.reference = reference;
-//	}
-//	public Boolean getStatus() {
-//		return status;
-//	}
-//	public void setStatus(Boolean status) {
-//		this.status = status;
-//	}
-//	public Long getIdPost() {
-//		return idPost;
-//	}
 	
 }

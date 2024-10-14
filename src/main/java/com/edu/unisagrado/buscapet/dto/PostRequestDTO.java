@@ -1,4 +1,4 @@
-package com.edu.unisagrado.buscapet.controller;
+package com.edu.unisagrado.buscapet.dto;
 
 import jakarta.validation.constraints.NotNull;
 
@@ -11,10 +11,11 @@ public record PostRequestDTO(
 		String image, 
 		String species,
 		String description, 
-		String state, 
-		String city,
-		String district, 
-		String reference, 
+//		String cep,
+//		String state, 
+//		String city,
+//		String district, 
+//		String reference, 
 		Boolean status) {
 
 }
