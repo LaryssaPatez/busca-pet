@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 //Irá representar a tabela no banco de dados
@@ -19,6 +20,7 @@ import lombok.NoArgsConstructor;
 
 //lombok
 @Getter //Lombok irá gerar todos os métodos de getters e setters
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "idPost")
@@ -32,7 +34,7 @@ public class PostEntity {
 	private String description;
 	
 	//Endereço
-	private String state;
+	private String state; //Será um enum com opções
 	private String city;
 	private String district;
 	private String reference;
