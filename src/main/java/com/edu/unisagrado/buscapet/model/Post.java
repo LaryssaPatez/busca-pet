@@ -24,7 +24,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "idPost")
-public class PostEntity {
+public class Post {
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,7 +42,7 @@ public class PostEntity {
 	private String neighborhood;
 	private String street;
 
-	public PostEntity(PostRequestDTO data) {
+	public Post(PostRequestDTO data) {
 		this.petName = data.petName();
 		this.image = data.image();
 		this.city = data.city();

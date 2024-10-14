@@ -1,6 +1,6 @@
 package com.edu.unisagrado.buscapet.dto;
 
-import com.edu.unisagrado.buscapet.model.PostEntity;
+import com.edu.unisagrado.buscapet.model.Post;
 
 //O que o servidor irá retornar
 public record PostResponseDTO(
@@ -13,17 +13,17 @@ public record PostResponseDTO(
 		String street,
 		Boolean status) {
 
-	public PostResponseDTO(PostEntity postEntity) {
-		this(postEntity.getIdPost(), 
-				postEntity.getPetName(), 
-				postEntity.getImage(), 
-				postEntity.getSpecies(),
-				postEntity.getDescription(), 
+	public PostResponseDTO(Post post) {
+		this(post.getIdPost(), 
+				post.getPetName(), 
+				post.getImage(), 
+				post.getSpecies(),
+				post.getDescription(), 
 //				postEntity.getCep(), 
-				postEntity.getState(), 
-				postEntity.getCity(),
-				postEntity.getNeighborhood(), 
-				postEntity.getStreet(), 
-				postEntity.getStatus());
+				post.getState(), 
+				post.getCity(),
+				post.getNeighborhood(), 
+				post.getStreet(), 
+				post.getStatus());
 	}
 }
