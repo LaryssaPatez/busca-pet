@@ -13,7 +13,7 @@ public class UserPostEntity {
 		@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 		private Long postId;
 		private Long userId;
-		private String title;
+		private String postName;
 		private Boolean status;
 		
 		

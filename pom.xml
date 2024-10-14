@@ -78,11 +78,6 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 		<!-- Buscar por CEP -->
-		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
-<!--		<dependency>-->
-<!--			<groupId>com.google.code.gson</groupId>-->
-<!--			<artifactId>gson</artifactId>-->
-<!--		</dependency>-->
 		<!--https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>

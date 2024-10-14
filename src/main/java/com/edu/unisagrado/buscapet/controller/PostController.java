@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.edu.unisagrado.buscapet.dto.AddressRequestDTO;
+//import com.edu.unisagrado.buscapet.dto.AddressRequestDTO;
 import com.edu.unisagrado.buscapet.dto.PostRequestDTO;
 import com.edu.unisagrado.buscapet.dto.PostResponseDTO;
 import com.edu.unisagrado.buscapet.model.PostEntity;
 import com.edu.unisagrado.buscapet.repository.PostRepository;
-import com.edu.unisagrado.buscapet.service.AddressService;
+//import com.edu.unisagrado.buscapet.service.AddressService;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +32,7 @@ public class PostController {
 	
 	@Autowired
 	private PostRepository postRepository;
-	private final AddressService addressService;
+//	private final AddressService addressService;
 	
 	@PostMapping
 	public ResponseEntity savePost(@RequestBody @Valid PostRequestDTO data) { //Indica o que precisa ser injetado no body da request, resquestDTO é a classe que indica o que chega da requisição
@@ -50,10 +50,10 @@ public class PostController {
 		
 	}
 	
-	@GetMapping("/endereco")
-	public ResponseEntity addressSearch(@RequestBody AddressRequestDTO addressRequest) {
-		return ResponseEntity.ok(addressService.execute(addressRequest));
-	}
+//	@GetMapping("/endereco")
+//	public ResponseEntity addressSearch(@RequestBody AddressRequestDTO addressRequest) {
+//		return ResponseEntity.ok(addressService.execute(addressRequest));
+//	}
 	
 	@PutMapping
 	@Transactional //Para executar todos as ações (update) em conjunto e atualizar todas as colunas
@@ -66,9 +66,9 @@ public class PostController {
     		postUpdate.setImage(data.image());
     		postUpdate.setSpecies(data.species());
     		postUpdate.setDescription(data.description());
-//    		postUpdate.setCity(data.city());
-//    		postUpdate.setDistrict(data.district());
-//    		postUpdate.setState(data.state());
+    		postUpdate.setCity(data.city());
+    		postUpdate.setDistrict(data.district());
+    		postUpdate.setState(data.state());
             return ResponseEntity.ok(postUpdate);
         } else {
         	return ResponseEntity.notFound().build();

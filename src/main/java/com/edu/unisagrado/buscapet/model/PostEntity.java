@@ -36,21 +36,21 @@ public class PostEntity {
 	private Boolean status;
 
 	//Endereço
-//	private String cep;
-//	private String state;
-//	private String city;
-//	private String district;
-//	private String reference;
+	private String cep;
+	private String state;
+	private String city;
+	private String district;
+	private String reference;
 
 	public PostEntity(PostRequestDTO data) {
 		this.petName = data.petName();
 		this.image = data.image();
-//		this.city = data.city();
-//		this.district = data.district();
-//		this.description = data.description();
-//		this.cep = data.cep();
-//		this.reference = data.reference();
-//		this.state = data.state();
+		this.city = data.city();
+		this.district = data.district();
+		this.description = data.description();
+		this.cep = data.cep();
+		this.reference = data.reference();
+		this.state = data.state();
 		this.status = data.status();
 
 	}
