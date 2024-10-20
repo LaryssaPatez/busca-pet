@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 //import com.edu.unisagrado.buscapet.dto.AddressRequestDTO;
@@ -29,7 +30,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("post") // Quando o front chamar o endpoint "post", irá cair nessa classe
+@RequestMapping("posts") // Quando o front chamar o endpoint "post", irá cair nessa classe
 public class PostController {
 
 	@Autowired
@@ -46,7 +47,7 @@ public class PostController {
 
 	}
 
-	@GetMapping
+	@GetMapping("/")
 	public List<PostResponseDTO> getAll() {
 
 		List<PostResponseDTO> postList = postRepository.findAll().stream().map(PostResponseDTO::new)
@@ -54,12 +55,14 @@ public class PostController {
 		return postList;
 
 	}
-
-	@GetMapping("/cidade/{city}")
-	public ResponseEntity<List<Post>> getPostsByCity(@PathVariable String city) {
-		List<Post> posts = postService.getPostsByCity(city);
-		return ResponseEntity.ok(posts);
-	}
+	
+    @GetMapping
+    public ResponseEntity<List<Post>> getPostsByFilters(
+            @RequestParam(required = false) String city,
+            @RequestParam(required = false) String status) {
+        List<Post> posts = postService.getPostsByFilters(city, status);
+        return ResponseEntity.ok(posts);
+    }
 
 //	@GetMapping("/endereco")
 //	public ResponseEntity addressSearch(@RequestBody AddressRequestDTO addressRequest) {

@@ -16,6 +16,6 @@ public record PostRequestDTO(
 		String city, 
 		String neighborhood, 
 		String street,
-		Boolean status) {
+		String status) {
 
 }

@@ -29,11 +29,11 @@ public class Post {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idPost;
-	private String species; //Será um enum com opções
+	private String species; //Frontend colocar opções de especies: cachorro, gato, coelho etc..
 	private String petName;
 	private String image;
 	private String description;
-	private Boolean status;
+	private String status; //Frontend colocar apenas duas opções: Perdido ou encontrado
 
 	//Endereço
 //	private String cep;

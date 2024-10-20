@@ -11,7 +11,7 @@ public record PostResponseDTO(
 		String city, 
 		String neighborhood, 
 		String street,
-		Boolean status) {
+		String status) {
 
 	public PostResponseDTO(Post post) {
 		this(post.getIdPost(), 
