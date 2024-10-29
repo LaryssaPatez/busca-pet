@@ -124,7 +124,7 @@ public class PostController {
 		}
 	}
 
-	//Para requisições delete, somente preciso passar o numero do idPost na url da requisição
+	//Para requisições delete precisa passar o numero do idPost na url da requisição
 	@DeleteMapping("/{idPost}")
 	public ResponseEntity deletePost(@PathVariable Long idPost) {
 		postRepository.deleteById(idPost);
