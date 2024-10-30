@@ -43,7 +43,7 @@ public class PostController {
 	@Autowired
 	private PostRepository postRepository;
 	private final PostService postService;
-	private static String imagesDirectory = "C:/Users/larys/OneDrive/Documentos/BuscaPet - Imagens";
+	private static String imagesDirectory = "C:/github/buscapet-imagens";
 //	private final AddressService addressService;
 
 	@PostMapping
@@ -60,13 +60,18 @@ public class PostController {
 	        // Cria o objeto Post com os dados do DTO
 	        Post postData = new Post(postRequestDTO);
 	        
+	        //Salvar o post antes de armazenar a imagem
 	        postRepository.save(postData);
 	        
 	        // Salvar a imagem
 	        if (!file.isEmpty()) {
 	            byte[] bytes = file.getBytes();
-	            Path directory = Paths.get(imagesDirectory + file.getOriginalFilename());
+	            Path directory = Paths.get(imagesDirectory, file.getOriginalFilename());
+
+	            // Verifica se o diretório existe, se não, cria
+	            Files.createDirectories(directory.getParent());
 	            Files.write(directory, bytes);
+
 	            
 	            postData.setImageName(file.getOriginalFilename()); // Armazena o nome da imagem no postData
 	            postRepository.save(postData); // Salva o nome da imagem no BD, coluna image_name
