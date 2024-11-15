@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +24,6 @@ import com.edu.unisagrado.buscapet.model.Post;
 import com.edu.unisagrado.buscapet.repository.PostRepository;
 //import com.edu.unisagrado.buscapet.service.AddressService;
 import com.edu.unisagrado.buscapet.service.PostService;
-import com.edu.unisagrado.buscapet.service.PostService;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +31,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("posts") // Quando o front chamar o endpoint "post", irá cair nessa classe
+@CrossOrigin(origins = "http://localhost")
 public class PostController {
 
 	@Autowired
