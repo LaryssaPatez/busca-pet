@@ -47,7 +47,6 @@ public class PostController {
 //	private final AddressService addressService;
 
 	@PostMapping
-//	public ResponseEntity savePost(@RequestParam @Valid PostRequestDTO data, @RequestParam("file") MultipartFile file) {
 	public ResponseEntity<PostResponseDTO> savePost(
 	        @RequestParam("data") String data, 
 	        @RequestParam("file") MultipartFile file) {
