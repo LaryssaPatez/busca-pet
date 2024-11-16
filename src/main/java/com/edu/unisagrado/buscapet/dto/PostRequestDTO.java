@@ -6,11 +6,11 @@ import jakarta.validation.constraints.NotNull;
 public record PostRequestDTO(
 		
 		Long idPost,
-		@NotNull
 		String petName, 
-		String image, 
+//		String imageName, 
 		String species,
-		String description, 
+		String description,
+		String imageName,
 //		String cep,
 		String state, 
 		String city, 

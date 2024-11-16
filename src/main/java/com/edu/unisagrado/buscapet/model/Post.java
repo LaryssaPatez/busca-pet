@@ -31,7 +31,7 @@ public class Post {
 	private Long idPost;
 	private String species; //Frontend colocar opções de especies: cachorro, gato, coelho etc..
 	private String petName;
-	private String image;
+	private String imageName;
 	private String description;
 	private String status; //Frontend colocar apenas duas opções: Perdido ou encontrado
 
@@ -44,7 +44,7 @@ public class Post {
 
 	public Post(PostRequestDTO data) {
 		this.petName = data.petName();
-		this.image = data.image();
+		this.imageName = data.imageName();
 		this.city = data.city();
 		this.neighborhood = data.neighborhood();
 		this.description = data.description();

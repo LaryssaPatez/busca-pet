@@ -5,7 +5,11 @@ import com.edu.unisagrado.buscapet.model.Post;
 //O que o servidor irá retornar
 public record PostResponseDTO(
 
-		Long idPost, String petName, String image, String species, String description,
+		Long idPost, 
+		String petName,
+		String species, 
+		String description,
+		String imageName,
 //		String cep,
 		String state, 
 		String city, 
@@ -16,9 +20,9 @@ public record PostResponseDTO(
 	public PostResponseDTO(Post post) {
 		this(post.getIdPost(), 
 				post.getPetName(), 
-				post.getImage(), 
 				post.getSpecies(),
-				post.getDescription(), 
+				post.getDescription(),
+				post.getImageName(),
 //				postEntity.getCep(), 
 				post.getState(), 
 				post.getCity(),
