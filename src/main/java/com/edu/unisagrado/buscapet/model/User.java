@@ -26,13 +26,19 @@ import lombok.NoArgsConstructor;
 public class User implements UserDetails {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.UUID)
 	private String id;
 	private String login;
 	private String password;
 
 	// Tipo de autenticação
 	private UserRole role;
+
+	public User(String login, String password, UserRole role) {
+		this.login = login;
+		this.password = password;
+		this.role = role;
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
