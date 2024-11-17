@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.edu.unisagrado.buscapet.model.User;
 import com.edu.unisagrado.buscapet.model.UserAuthenticationDTO;
+import com.edu.unisagrado.buscapet.model.UserLoginResponseDTO;
 import com.edu.unisagrado.buscapet.model.UserRegisterDTO;
 import com.edu.unisagrado.buscapet.repository.UserRepository;
+import com.edu.unisagrado.buscapet.security.TokenService;
 
 @RestController
 @RequestMapping("auth")
@@ -24,13 +26,18 @@ public class AuthenticationController {
 	
 	@Autowired
 	private UserRepository repository;
+	
+	@Autowired
+	private TokenService tokenService;
 
 	@PostMapping("/login")
 	public ResponseEntity login(@RequestBody @Valid UserAuthenticationDTO data) {
 		var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
 		var auth = this.authenticationManager.authenticate(usernamePassword);
 		
-		return ResponseEntity.ok().build();
+		var token = tokenService.generateToken((User)auth.getPrincipal());
+		
+		return ResponseEntity.ok(new UserLoginResponseDTO(token));
 	}
 	
 	@PostMapping("/cadastro")

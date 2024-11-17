@@ -1,5 +1,6 @@
 package com.edu.unisagrado.buscapet.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -11,11 +12,14 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 //Redefinindo configurações padrões do Spring Security
 public class SecurityConfigurations { 
+	@Autowired
+	SecurityFilter securityFilter;
 	
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -31,11 +35,14 @@ public class SecurityConfigurations {
 						//Somente usuários podem fazer requisições a esses endpoints
 						.requestMatchers(HttpMethod.POST, "/post").hasRole("USER") 
 						.requestMatchers(HttpMethod.PUT, "/post").hasRole("USER") 
-						.anyRequest().authenticated() //Demais requisições só precisa estar autenticado
 						
 						//Somente ADMIN podem fazer requisições a esses endpoints
 						.requestMatchers(HttpMethod.DELETE, "/post").hasRole("ADMIN") 
+						
+						//Demais endpoints
+						.anyRequest().authenticated() //Demais requisições só precisa estar autenticado
 				)
+				.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
 				.build();
 	}
 	
