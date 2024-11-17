@@ -25,7 +25,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "idPost")
 public class Post {
-	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idPost;
