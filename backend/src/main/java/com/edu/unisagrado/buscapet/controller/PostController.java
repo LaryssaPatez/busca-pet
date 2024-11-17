@@ -37,14 +37,13 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("post") // Quando o front chamar o endpoint "posts", irá cair nessa classe
+@RequestMapping("post")
 public class PostController {
 
 	@Autowired
 	private PostRepository postRepository;
 	private final PostService postService;
-	private static String imagesDirectory = "C:/github/buscapet-imagens";
-//	private final AddressService addressService;
+	private static String imagesDirectory = "C:\\github\\buscapet\\files";
 
 	@PostMapping
 	public ResponseEntity<PostResponseDTO> savePost(
@@ -101,14 +100,8 @@ public class PostController {
 		return ResponseEntity.ok(posts);
 	}
 
-//	@GetMapping("/endereco")
-//	public ResponseEntity addressSearch(@RequestBody AddressRequestDTO addressRequest) {
-//		return ResponseEntity.ok(addressService.execute(addressRequest));
-//	}
-
 	@PutMapping
 	@Transactional // Para executar todos as ações (update) em conjunto e atualizar todas as colunas
-	//Para enviar o put é necessário informar o idPost
 	public ResponseEntity updatePost(@RequestBody @Valid PostRequestDTO data) {
 		Optional<Post> optionalPost = postRepository.findById(data.idPost());
 		if (optionalPost.isPresent()) {
@@ -128,7 +121,6 @@ public class PostController {
 		}
 	}
 
-	//Para requisições delete precisa passar o numero do idPost na url da requisição
 	@DeleteMapping("/{idPost}")
 	public ResponseEntity deletePost(@PathVariable Long idPost) {
 		postRepository.deleteById(idPost);
