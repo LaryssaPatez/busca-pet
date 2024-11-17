@@ -36,7 +36,6 @@ public class Post {
 	private String status; //Frontend colocar apenas duas opções: Perdido ou encontrado
 
 	//Endereço
-//	private String cep;
 	private String state;
 	private String city;
 	private String neighborhood;
@@ -45,6 +44,7 @@ public class Post {
 	public Post(PostRequestDTO data) {
 		this.petName = data.petName();
 		this.imageName = data.imageName();
+		this.species = data.species();
 		this.city = data.city();
 		this.neighborhood = data.neighborhood();
 		this.description = data.description();
