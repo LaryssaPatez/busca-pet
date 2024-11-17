@@ -16,43 +16,35 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-//Redefinindo configurações padrões do Spring Security
-public class SecurityConfigurations { 
-	@Autowired
-	SecurityFilter securityFilter;
-	
-	@Bean
-	SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-		return httpSecurity
-				.csrf(csrf -> csrf.disable())
-				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-				.authorizeHttpRequests(authorize -> authorize
-						//Qualquer pessoa pode fazer requisição a esses endpoints
-						.requestMatchers(HttpMethod.POST, "/auth/login").permitAll() 
-						.requestMatchers(HttpMethod.POST, "/auth/cadastro").permitAll() 
-						.requestMatchers(HttpMethod.GET, "/post").permitAll() 
-	
-						//Somente usuários podem fazer requisições a esses endpoints
-						.requestMatchers(HttpMethod.POST, "/post").hasRole("USER") 
-						.requestMatchers(HttpMethod.PUT, "/post").hasRole("USER") 
-						
-						//Somente ADMIN podem fazer requisições a esses endpoints
-						.requestMatchers(HttpMethod.DELETE, "/post").hasRole("ADMIN") 
-						
-						//Demais endpoints
-						.anyRequest().authenticated() //Demais requisições só precisa estar autenticado
-				)
-				.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
-				.build();
-	}
-	
-	@Bean
-	AuthenticationManager autheticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-		return authenticationConfiguration.getAuthenticationManager();
-	}
-	
-	@Bean
-	PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+public class SecurityConfigurations {
+    @Autowired
+    SecurityFilter securityFilter;
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        return  httpSecurity
+                .csrf(csrf -> csrf.disable())
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/auth/cadastro").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/post").hasRole("USER")
+                        .requestMatchers(HttpMethod.GET, "/post").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/post").hasRole("USER")
+                        .requestMatchers(HttpMethod.DELETE, "/post").hasRole("ADMIN") 
+                        .anyRequest().authenticated()
+                )
+                .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
+                .build();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
 }

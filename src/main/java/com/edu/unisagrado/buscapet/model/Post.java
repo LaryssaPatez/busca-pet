@@ -35,7 +35,6 @@ public class Post {
 	private String status; //Frontend colocar apenas duas opções: Perdido ou encontrado
 
 	//Endereço
-//	private String cep;
 	private String state;
 	private String city;
 	private String neighborhood;
