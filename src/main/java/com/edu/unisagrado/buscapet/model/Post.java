@@ -48,7 +48,6 @@ public class Post {
 		this.city = data.city();
 		this.neighborhood = data.neighborhood();
 		this.description = data.description();
-//		this.cep = data.cep();
 		this.street = data.street();
 		this.state = data.state();
 		this.status = data.status();
