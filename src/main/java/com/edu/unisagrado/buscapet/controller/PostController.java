@@ -23,32 +23,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-//import com.edu.unisagrado.buscapet.dto.AddressRequestDTO;
 import com.edu.unisagrado.buscapet.dto.PostRequestDTO;
 import com.edu.unisagrado.buscapet.dto.PostResponseDTO;
 import com.edu.unisagrado.buscapet.model.Post;
 import com.edu.unisagrado.buscapet.repository.PostRepository;
-//import com.edu.unisagrado.buscapet.service.AddressService;
 import com.edu.unisagrado.buscapet.service.PostService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-//import lombok.Value;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("post") // Quando o front chamar o endpoint "posts", irá cair nessa classe
+@RequestMapping("post")
 public class PostController {
 
 	@Autowired
 	private PostRepository postRepository;
 	private final PostService postService;
-	private static String imagesDirectory = "C:/github/buscapet-imagens";
-//	private final AddressService addressService;
+	private static String imagesDirectory = "C:\\github\\buscapet\\files";
 
 	@PostMapping
-//	public ResponseEntity savePost(@RequestParam @Valid PostRequestDTO data, @RequestParam("file") MultipartFile file) {
 	public ResponseEntity<PostResponseDTO> savePost(
 	        @RequestParam("data") String data, 
 	        @RequestParam("file") MultipartFile file) {
@@ -103,14 +98,8 @@ public class PostController {
 		return ResponseEntity.ok(posts);
 	}
 
-//	@GetMapping("/endereco")
-//	public ResponseEntity addressSearch(@RequestBody AddressRequestDTO addressRequest) {
-//		return ResponseEntity.ok(addressService.execute(addressRequest));
-//	}
-
 	@PutMapping
 	@Transactional // Para executar todos as ações (update) em conjunto e atualizar todas as colunas
-	//Para enviar o put é necessário informar o idPost
 	public ResponseEntity updatePost(@RequestBody @Valid PostRequestDTO data) {
 		Optional<Post> optionalPost = postRepository.findById(data.idPost());
 		if (optionalPost.isPresent()) {
@@ -130,7 +119,6 @@ public class PostController {
 		}
 	}
 
-	//Para requisições delete precisa passar o numero do idPost na url da requisição
 	@DeleteMapping("/{idPost}")
 	public ResponseEntity deletePost(@PathVariable Long idPost) {
 		postRepository.deleteById(idPost);
