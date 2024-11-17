@@ -1,0 +1,52 @@
+[
+    {
+        "name": "Bobby",
+        "keeper": "Maria Oliveira",
+        "history": "Bobby é um cachorro alegre que adora brincar no parque. Ele foi resgatado por Maria quando ainda era um filhote perdido nas ruas. Desde então, eles têm sido inseparáveis. Bobby é conhecido por fazer amizade com todos os cães do bairro e por sua energia inesgotável. Nos fins de semana, ele participa de competições de agilidade canina e já ganhou vários prêmios."
+    },
+    {
+        "name": "Mia",
+        "keeper": "Carlos Souza",
+        "history": "Mia é uma cachorra curiosa que explora todos os cantos da casa. Ela foi adotada por Carlos em um abrigo local. Mia tem uma fascinação especial por brinquedos que fazem barulho e adora perseguir bolinhas. À noite, ela gosta de se aconchegar no colo de Carlos enquanto ele assiste TV. Sua personalidade brincalhona e afetuosa traz alegria a todos que a conhecem."
+    },
+    {
+        "name": "Luna",
+        "keeper": "Fernanda Lima",
+        "history": "Luna é uma cadela que ama correr em campos abertos. Fernanda a encontrou em uma feira de adoção e se apaixonou imediatamente. Luna adora atividades ao ar livre e é uma excelente companheira para caminhadas e corridas. Além disso, ela é muito sociável com outros cães e pessoas. Luna é famosa na vizinhança pelas fotos adoráveis que Fernanda compartilha nas redes sociais."
+    },
+    {
+        "name": "Thor",
+        "keeper": "Ricardo Alves",
+        "history": "Thor é um cão leal que protege sua família com bravura. Ricardo o adotou de um canil de treinamento policial, onde Thor não passou nos testes por ser amigável demais. Agora, Thor é o guardião da casa, mas também um companheiro carinhoso para as crianças. Ele adora caminhadas longas e jogos de busca. Thor recebeu treinamento avançado e responde a comandos em várias línguas."
+    },
+    {
+        "name": "Nina",
+        "keeper": "Elisa Ribeiro",
+        "history": "Nina é uma cadela que sabe realizar vários truques. Elisa a tem desde que era uma filhote. Nina consegue executar comandos como sentar, rolar e dar a pata. Ela gosta de interagir com as visitas e é especialmente ativa durante as manhãs. Nina tem um talento especial para aprender e está sempre pronta para novos desafios."
+    },
+    {
+        "name": "Max",
+        "keeper": "Luiz Mendes",
+        "history": "Max é um cachorro preguiçoso que passa o dia dormindo no sofá. Luiz o resgatou de um abrigo durante um dia chuvoso. Max adora lugares quentes e macios, e raramente é visto fazendo algo além de dormir ou comer. Apesar disso, ele tem momentos de energia quando corre pelo quintal sem motivo aparente. Max aprecia muito quando Luiz o escova, e esse é um dos poucos momentos em que ele está acordado."
+    },
+    {
+        "name": "Bella",
+        "keeper": "Patrícia Barbosa",
+        "history": "Bella é uma cadela que adora tomar sol no quintal. Patrícia a adotou de um abrigo local. Bella passa horas deitada ao sol, relaxando e observando o movimento ao redor. Ela é alimentada com uma dieta equilibrada e recebe muitos cuidados. Bella é conhecida por sua tranquilidade e é uma companhia serena para Patrícia."
+    },
+    {
+        "name": "Charlie",
+        "keeper": "Fernando Pinto",
+        "history": "Charlie é um cachorro que gosta de correr e brincar. Fernando o comprou para seu filho, mas rapidamente se tornou o animal de estimação favorito da família. Charlie é mais ativo durante o dia e adora brincar no jardim. Ele gosta de esconder brinquedos em diferentes partes da casa e é muito curioso sobre tudo o que acontece ao seu redor."
+    },
+    {
+        "name": "Lola",
+        "keeper": "Camila Martins",
+        "history": "Lola é uma cadela que ama buscar a bola no parque. Camila a adotou de um abrigo local, onde Lola esperava por uma família amorosa. Ela é extremamente energética e precisa de exercícios diários. Lola se dá bem com outros cães e crianças, tornando-a perfeita para a família de Camila. Além de buscar bolas, Lola gosta de nadar no lago e fazer trilhas."
+    },
+    {
+        "name": "Simba",
+        "keeper": "André Carvalho",
+        "history": "Simba é um cachorro aventureiro que adora explorar novos lugares. André o encontrou abandonado em um parque durante uma caminhada. Desde então, Simba tem mostrado sua natureza independente e corajosa. Ele passa a maior parte do tempo ao ar livre, explorando o bairro e fazendo amizade com outros animais. Apesar de suas aventuras, Simba sempre volta para casa para uma refeição e um pouco de carinho."
+    }
+]
