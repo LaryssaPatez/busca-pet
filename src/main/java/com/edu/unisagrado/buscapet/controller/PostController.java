@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,18 +24,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-//import com.edu.unisagrado.buscapet.dto.AddressRequestDTO;
 import com.edu.unisagrado.buscapet.dto.PostRequestDTO;
 import com.edu.unisagrado.buscapet.dto.PostResponseDTO;
 import com.edu.unisagrado.buscapet.model.Post;
 import com.edu.unisagrado.buscapet.repository.PostRepository;
-//import com.edu.unisagrado.buscapet.service.AddressService;
 import com.edu.unisagrado.buscapet.service.PostService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-//import lombok.Value;
 
 @RequiredArgsConstructor
 @RestController
