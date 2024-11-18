@@ -43,13 +43,15 @@ const Login = ({ closeModal }: LoginModalProps) => {
 			const response = await axios.post(`${API_URL}/auth/login`, { login, password });
 			if (response.status == 200) {
 				setAuthData({ token: response.data.token });
-				localStorage.setItem('token', response.data.token); // Store JWT token in local storage
+				localStorage.setItem('token', response.data.token);
+				alert('Logado com sucesso');
+				closeModal();
 			} else {
-				alert('Login failed. Please check your credentials.');
+				alert('Falha no Login. Configura suas credenciais.');
 			}
 		} catch (error) {
 			console.error('Login error:', error);
-			alert('An error occurred during login. Please try again.');
+			alert('Falha no Login. Configura suas credenciais.');
 		}
 	};
 
@@ -81,7 +83,6 @@ const Login = ({ closeModal }: LoginModalProps) => {
 		</>
 	);
 
-	// Password recovery form content
 	const renderPasswordRecoveryForm = () => (
 		<>
 			<h2>Recuperar senha</h2>
