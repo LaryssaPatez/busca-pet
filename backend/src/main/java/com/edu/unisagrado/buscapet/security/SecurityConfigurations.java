@@ -28,10 +28,13 @@ public class SecurityConfigurations {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/cadastro").permitAll()
+
+                        .requestMatchers("/files/**").permitAll()
+
                         .requestMatchers(HttpMethod.POST, "/post").hasRole("USER")
                         .requestMatchers(HttpMethod.GET, "/post").permitAll()
                         .requestMatchers(HttpMethod.PUT, "/post").hasRole("USER")
-                        .requestMatchers(HttpMethod.DELETE, "/post").hasRole("ADMIN") 
+                        .requestMatchers(HttpMethod.DELETE, "/post").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
