@@ -43,7 +43,7 @@ public class PostController {
 	@Autowired
 	private PostRepository postRepository;
 	private final PostService postService;
-	private static String imagesDirectory = "C:\\github\\buscapet\\files";
+	private static String imagesDirectory = "files";
 
 	@PostMapping
 	public ResponseEntity<PostResponseDTO> savePost(

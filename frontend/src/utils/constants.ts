@@ -1,5 +1,5 @@
 export const API_URL:string = 'http://localhost:8080';
-export const IMAGE_URL:string = 'http://localhost:8080/buscapet-images/';
+export const IMAGE_URL:string = 'http://localhost:8080/files/';
 
 // external API and services
 export const DOGAPI_URL:string = 'https://dog.ceo/api/breeds/image/random';
