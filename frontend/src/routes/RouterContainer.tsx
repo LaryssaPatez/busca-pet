@@ -9,7 +9,7 @@ export default function RouterContainer() {
         <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/search" element={<SearchPets />} />
-            <Route path="/auth/register" element={ <SignUp/> } />
+            <Route path="/auth/cadastrar" element={ <SignUp/> } />
             <Route path="*" element={<NotFound/>} />
         </Routes>
     );
