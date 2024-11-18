@@ -17,7 +17,7 @@ export const PageWrapper = styled.div`
 
 export const Header = styled.header`
     height: 6rem;
-    padding: 1rem 0;
+    padding: 1rem 1.5rem;
     font-weight: 400;
     width: 100%;
 
@@ -45,6 +45,7 @@ export const Main = styled.main`
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     padding: 0 1rem;
+    min-width: 60rem;
 `;
 
 export const FilterContainer = styled.aside`
