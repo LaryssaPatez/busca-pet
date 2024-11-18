@@ -42,3 +42,13 @@ export type PetFilter = {
 
 export type Species = 'Dog' | 'Cat';
 export type Status = 'Lost' | 'Found';
+
+export interface AuthData {
+    token: string | null;
+}
+
+export interface AuthContextProps {
+    authData: AuthData;
+    setAuthData: React.Dispatch<React.SetStateAction<AuthData>>;
+    logout: () => void;
+}
