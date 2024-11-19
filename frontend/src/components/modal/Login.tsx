@@ -47,11 +47,11 @@ const Login = ({ closeModal }: LoginModalProps) => {
 				alert('Logado com sucesso');
 				closeModal();
 			} else {
-				alert('Falha no Login. Configura suas credenciais.');
+				alert('Falha no Login. Confira suas credenciais.');
 			}
 		} catch (error) {
 			console.error('Login error:', error);
-			alert('Falha no Login. Configura suas credenciais.');
+			alert('Falha no Login. Confira suas credenciais.');
 		}
 	};
 
