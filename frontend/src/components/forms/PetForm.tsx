@@ -1,19 +1,30 @@
 import { useForm } from "react-hook-form"
 import { CloseButton, FormGroup, FormWrapper, ImageSelection, LocationContainer, ModalOverlay, SubmitButton, Title } from "./PetForm.style"
 import { API_URL } from '../../utils/constants';
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LoginModalProps, IFormData, Species } from "../../utils/types";
 import axios from 'axios';
+import { AuthContext } from "../../context/AuthContext";
 
 export default function PetForm({ closeModal }: LoginModalProps) {
     const { register, handleSubmit } = useForm<IFormData>();
     const [species, setSpecies] = useState<Species>('Dog');
+	const { authData } = useContext(AuthContext);
+    const token = localStorage.getItem('token') || authData.token;
 
     const stopPropagation = (e: React.MouseEvent) => e.stopPropagation();
     const handleOverlayClick = () => closeModal();
     const handleSpeciesChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSpecies(event.target.value as Species);
     };
+
+    useEffect(() => {
+		if (authData.token) {
+			localStorage.setItem('token', authData.token);
+		} else {
+			localStorage.removeItem('token');
+		}
+	}, [authData.token]);
 
     const onSubmit = async (data: IFormData) => {
         try {
@@ -35,6 +46,7 @@ export default function PetForm({ closeModal }: LoginModalProps) {
             const response = await axios.post(`${API_URL}/post`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
+                    'Authorization': `Bearer ${token}`,
                 },
             });
 
