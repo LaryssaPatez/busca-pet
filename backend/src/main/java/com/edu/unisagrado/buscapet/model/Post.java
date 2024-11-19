@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -28,6 +29,8 @@ public class Post {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idPost;
+	@ManyToOne
+	private User user;
 	private String species; //Frontend colocar opções de especies: cachorro, gato, coelho etc..
 	private String petName;
 	private String imageName;
@@ -41,15 +44,16 @@ public class Post {
 	private String street;
 
 	public Post(PostRequestDTO data) {
-		this.petName = data.petName();
-		this.imageName = data.imageName();
-		this.species = data.species();
-		this.city = data.city();
-		this.neighborhood = data.neighborhood();
-		this.description = data.description();
-		this.street = data.street();
-		this.state = data.state();
-		this.status = data.status();
+		this.user = data.getUser();
+		this.petName = data.getPetName();
+		this.imageName = data.getImageName();
+		this.species = data.getSpecies();
+		this.city = data.getCity();
+		this.neighborhood = data.getNeighborhood();
+		this.description = data.getDescription();
+		this.street = data.getStreet();
+		this.state = data.getState();
+		this.status = data.getStatus();
 
 	}
 	

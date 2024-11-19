@@ -13,6 +13,8 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.edu.unisagrado.buscapet.model.User;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @Service
 public class TokenService {
 	@Value("{${api.security.token.secret}")
@@ -48,5 +50,11 @@ public class TokenService {
 	private Instant genExpirationDate() {
 		return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
 	}
+	
+    public String recoverToken(HttpServletRequest request){
+        var authHeader = request.getHeader("Authorization");
+        if(authHeader == null) return null;
+        return authHeader.replace("Bearer ", "");
+    }
 
 }

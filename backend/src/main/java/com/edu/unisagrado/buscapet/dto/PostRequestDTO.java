@@ -1,21 +1,25 @@
 package com.edu.unisagrado.buscapet.dto;
 
-import jakarta.validation.constraints.NotNull;
+import com.edu.unisagrado.buscapet.model.User;
+
+import lombok.Getter;
+import lombok.Setter;
 
 //O que o usuário irá enviar na requisição
-public record PostRequestDTO(
+@Getter
+@Setter
+public class PostRequestDTO {
 		
-		Long idPost,
-		String petName, 
-//		String imageName, 
-		String species,
-		String description,
-		String imageName,
-//		String cep,
-		String state, 
-		String city, 
-		String neighborhood, 
-		String street,
-		String status) {
+		private Long idPost;
+		private User user;
+		private String petName;
+		private String species;
+		private String description;
+		private String imageName;
+		private String state;
+		private String city;
+		private String neighborhood; 
+		private String street;
+		private String status;
 
 }
