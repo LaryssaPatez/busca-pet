@@ -13,17 +13,14 @@
 git clone https://github.com/LaryssaPatez/busca-pet.git
 ```
 ### Backend
-**1. Alterar o diretório da imagem dentro do projeto**
-- No arquivo PostController.java, altere o diretório onde as imagens dos pets serão salvas. Certifique-se de configurar um caminho de diretório acessível para o servidor.
-  
-**2. Instalar o MySQL**
+**1. Instalar o MySQL**
 - Instale o MySQL em sua máquina local. Você pode baixar o MySQL [aqui](https://dev.mysql.com/downloads/installer/).
   
-**3. Configurar o MySQL**
+**2. Configurar o MySQL**
 - Altere as credenciais de acesso no arquivo application.properties para corresponder à sua configuração do MySQL (exemplo: usuário, senha e URL do banco).
 - Crie um banco de dados no MySQL com o nome buscapet.
 
-**4. Subir o Backend na IDE**
+**3. Subir o Backend na IDE**
 - Abra o projeto do backend na sua IDE preferida (por exemplo, Eclipse).
 - Se estiver usando Eclipse, instale o Spring Boot Tools através do marketplace:
   - Vá em Help > Eclipse Marketplace.
