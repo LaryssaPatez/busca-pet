@@ -9,6 +9,7 @@ import {
 import { AuthContext } from '../../context/AuthContext';
 import { API_URL } from '../../utils/constants';
 import axios from 'axios';
+import { getUserFromToken } from '../../utils/auth';
 
 const Login = ({ closeModal }: LoginModalProps) => {
 	const [isPasswordRecovery, setIsPasswordRecovery] = useState(false);
@@ -42,8 +43,10 @@ const Login = ({ closeModal }: LoginModalProps) => {
 		try {
 			const response = await axios.post(`${API_URL}/auth/login`, { login, password });
 			if (response.status == 200) {
-				setAuthData({ token: response.data.token });
-				localStorage.setItem('token', response.data.token);
+				const {token} = response.data;
+				const user:any = getUserFromToken(token);
+				setAuthData({ token, user });
+				localStorage.setItem('token', token);
 				alert('Logado com sucesso');
 				closeModal();
 			} else {

@@ -32,10 +32,10 @@ public class SecurityConfigurations {
 
                         .requestMatchers("/files/**").permitAll()
 
-                        .requestMatchers(HttpMethod.POST, "/post").hasRole("USER")
+                        .requestMatchers(HttpMethod.POST, "/post").permitAll()
                         .requestMatchers(HttpMethod.GET, "/post").permitAll()
-                        .requestMatchers(HttpMethod.PUT, "/post").hasRole("USER")
-                        .requestMatchers(HttpMethod.DELETE, "/post").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/post/**").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/post/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
