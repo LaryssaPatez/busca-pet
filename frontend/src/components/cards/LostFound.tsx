@@ -47,10 +47,10 @@ export default function LostFound({ name, creator, location, status, imageUrl, i
                 <div>
                     <p>Localização: {location}</p>
                     {creator === username && (
-                        <>
+                        <span>
                             <MdModeEdit onClick={() => console.log(idPost)} />
                             <MdDeleteForever onClick={handleDelete} />
-                        </>
+                        </span>
                     )}
                 </div>
             </CardContent>

@@ -61,4 +61,15 @@ export const CardContent = styled.div`
         font-size: 1rem;
         color: #424242;
     }
+    
+    span {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        :hover {
+            color: ${theme.colors.primary};
+            cursor: pointer;
+        }
+    }
 `;
