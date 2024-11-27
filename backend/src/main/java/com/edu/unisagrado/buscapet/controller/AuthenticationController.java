@@ -35,7 +35,6 @@ public class AuthenticationController {
 	public ResponseEntity login(@RequestBody @Valid UserAuthenticationDTO data) {
 		var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
 		var auth = this.authenticationManager.authenticate(usernamePassword);
-		
 		var token = tokenService.generateToken((User)auth.getPrincipal());
 		
 		return ResponseEntity.ok(new UserLoginResponseDTO(token));
@@ -43,10 +42,10 @@ public class AuthenticationController {
 	
 	@PostMapping("/cadastro")
 	public ResponseEntity register(@RequestBody @Valid UserRegisterDTO data) {
-		if(this.repository.findByLogin(data.login()) != null) return ResponseEntity.badRequest().build();
+		if(this.repository.findByLogin(data.getLogin()) != null) return ResponseEntity.badRequest().build();
 		
-		String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
-		User newUser = new User(data.login(), encryptedPassword, data.role());
+		String encryptedPassword = new BCryptPasswordEncoder().encode(data.getPassword());
+		User newUser = new User(data.getLogin(), encryptedPassword, data.getRole());
 		
 		this.repository.save(newUser);
 		

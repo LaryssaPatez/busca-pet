@@ -18,9 +18,7 @@ import lombok.Setter;
 //Irá representar a tabela no banco de dados
 @Table(name = "Post_Pet")
 @Entity(name = "Post_Pet")
-
-//lombok
-@Getter //Lombok irá gerar todos os métodos de getters e setters
+@Getter 
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,17 +29,16 @@ public class Post {
 	private Long idPost;
 	@ManyToOne
 	private User user;
-	private String species; //Frontend colocar opções de especies: cachorro, gato, coelho etc..
+	private String species; 
 	private String petName;
 	private String imageName;
 	private String description;
-	private String status; //Frontend colocar apenas duas opções: Perdido ou encontrado
+	private String status; 
 
 	//Endereço
 	private String state;
 	private String city;
 	private String neighborhood;
-	private String street;
 
 	public Post(PostRequestDTO data) {
 		this.user = data.getUser();
@@ -51,7 +48,6 @@ public class Post {
 		this.city = data.getCity();
 		this.neighborhood = data.getNeighborhood();
 		this.description = data.getDescription();
-		this.street = data.getStreet();
 		this.state = data.getState();
 		this.status = data.getStatus();
 

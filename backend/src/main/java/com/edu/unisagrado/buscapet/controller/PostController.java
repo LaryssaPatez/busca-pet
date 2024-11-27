@@ -53,67 +53,69 @@ public class PostController {
 	private static String imagesDirectory = "files";
 
 	@PostMapping
-	public ResponseEntity<PostResponseDTO> savePost(
-	        @RequestParam("data") String data, 
-	        @RequestParam("file") MultipartFile file,
-	        HttpServletRequest request) {
+	public ResponseEntity<PostResponseDTO> savePost(@RequestParam("data") String data,
+			@RequestParam("file") MultipartFile file, HttpServletRequest request) {
 
-	    try {
-	        // Converte a string JSON recebida em um objeto PostRequestDTO
-	        ObjectMapper objectMapper = new ObjectMapper();
-	        PostRequestDTO postRequestDTO = objectMapper.readValue(data, PostRequestDTO.class);
-	        
-	        var token = tokenService.recoverToken(request);
-	        var login = tokenService.validateToken(token);
-	        User user = userRepository.findByLogin(login);
-	        postRequestDTO.setUser(user);
-	        // Cria o objeto Post com os dados do DTO
-	        Post postData = new Post(postRequestDTO);
-	        
-	        //Salvar o post antes de armazenar a imagem
-	        postRepository.save(postData);
-	        
-	        // Salvar a imagem
-	        if (!file.isEmpty()) {
-	            byte[] bytes = file.getBytes();
-	            Path directory = Paths.get(imagesDirectory, file.getOriginalFilename());
+		try {
+			// Converte a string JSON recebida em um objeto PostRequestDTO
+			ObjectMapper objectMapper = new ObjectMapper();
+			PostRequestDTO postRequestDTO = objectMapper.readValue(data, PostRequestDTO.class);
 
-	            // Verifica se o diretório existe, se não, cria
-	            Files.createDirectories(directory.getParent());
-	            Files.write(directory, bytes);
+			var token = tokenService.recoverToken(request);
+			var login = tokenService.validateToken(token);
+			User user = userRepository.findByLogin(login);
+			postRequestDTO.setUser(user);
+			// Cria o objeto Post com os dados do DTO
+			Post postData = new Post(postRequestDTO);
 
-	            
-	            postData.setImageName(file.getOriginalFilename()); // Armazena o nome da imagem no postData
-	            postRepository.save(postData); // Salva o nome da imagem no BD, coluna image_name
-	        }
-	        
-	        PostResponseDTO responseDTO = new PostResponseDTO(postData);
-	        return ResponseEntity.ok(responseDTO);
-	        
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-	    }
+			// Salvar o post antes de armazenar a imagem
+			postRepository.save(postData);
+
+			// Salvar a imagem
+			if (!file.isEmpty()) {
+				byte[] bytes = file.getBytes();
+				Path directory = Paths.get(imagesDirectory, file.getOriginalFilename());
+
+				// Verifica se o diretório existe, se não, cria
+				Files.createDirectories(directory.getParent());
+				Files.write(directory, bytes);
+
+				postData.setImageName(file.getOriginalFilename()); // Armazena o nome da imagem no postData
+				postRepository.save(postData); // Salva o nome da imagem no BD, coluna image_name
+			}
+
+			PostResponseDTO responseDTO = new PostResponseDTO(postData);
+			return ResponseEntity.ok(responseDTO);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		}
 	}
 
-	@GetMapping("/")
-	public List<PostResponseDTO> getAll() {
+    @GetMapping
+    public ResponseEntity<List<PostResponseDTO>> getPosts(
+            @RequestParam(required = false) String city,
+            @RequestParam(required = false) String status) {
 
-		List<PostResponseDTO> postList = postRepository.findAll().stream().map(PostResponseDTO::new)
-				.collect(Collectors.toList());
-		return postList;
+        // Se os parâmetros não forem fornecidos, retorna todos os posts
+        List<Post> posts;
+        if (city == null && status == null) {
+            posts = postRepository.findAll();
+        } else {
+            posts = postService.getPostsByFilters(city, status);
+        }
 
-	}
+        // Converte a lista de Post para PostResponseDTO
+        List<PostResponseDTO> response = posts.stream()
+                                              .map(PostResponseDTO::new)
+                                              .collect(Collectors.toList());
 
-	@GetMapping
-	public ResponseEntity<List<Post>> getPostsByFilters(@RequestParam(required = false) String city,
-			@RequestParam(required = false) String status) {
-		List<Post> posts = postService.getPostsByFilters(city, status);
-		return ResponseEntity.ok(posts);
-	}
+        return ResponseEntity.ok(response);
+    }
 
 	@PutMapping
-	@Transactional // Para executar todos as ações (update) em conjunto e atualizar todas as colunas
+	@Transactional // Executa todas as ações (update) em conjunto e atualizar todas as colunas
 	public ResponseEntity updatePost(@RequestBody @Valid PostRequestDTO data) {
 		Optional<Post> optionalPost = postRepository.findById(data.getIdPost());
 		if (optionalPost.isPresent()) {
@@ -124,10 +126,11 @@ public class PostController {
 			postUpdate.setSpecies(data.getSpecies());
 			postUpdate.setDescription(data.getDescription());
 			postUpdate.setCity(data.getCity());
-			postUpdate.setStreet(data.getStreet());
 			postUpdate.setNeighborhood(data.getNeighborhood());
 			postUpdate.setState(data.getState());
-			return ResponseEntity.ok(postUpdate);
+			
+			PostResponseDTO responseDTO = new PostResponseDTO(postUpdate);
+			return ResponseEntity.ok(responseDTO);
 		} else {
 			return ResponseEntity.notFound().build();
 		}
