@@ -26,7 +26,7 @@ export default function LostFound({ name, creator, location, status, imageUrl, i
                 },
             });
 
-            alert('Post deleted successfully');
+            alert('Postagem deletada com sucesso.');
         } catch (error) {
             console.error('Falha ao deletar a postagem:', error);
             alert('Falha ao deletar a postagem');
