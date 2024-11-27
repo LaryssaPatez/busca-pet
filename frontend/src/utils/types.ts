@@ -1,8 +1,10 @@
 export interface LostFoundCardProps {
     name: string;
+    creator: string;
     location: string;
     status: string;
     imageUrl: string;
+    idPost: number;
 }
 
 export interface HighlightedCardProps {
@@ -45,6 +47,7 @@ export type Status = 'Lost' | 'Found';
 
 export interface AuthData {
     token: string | null;
+    user: string | null;
 }
 
 export interface AuthContextProps {

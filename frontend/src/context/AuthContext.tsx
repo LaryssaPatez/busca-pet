@@ -1,19 +1,21 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { AuthContextProps, AuthData } from '../utils/types';
+import { getUserFromToken } from '../utils/auth';
 
 export const AuthContext = createContext<AuthContextProps>({
-    authData: { token: null },
+    authData: { token: null, user: null },
     setAuthData: () => {},
     logout: () => {},
 });
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [authData, setAuthData] = useState<AuthData>({ token: null });
+    const [authData, setAuthData] = useState<AuthData>({ token: null, user: null });
 
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
-            setAuthData({ token });
+            const user:any = getUserFromToken(token);
+            setAuthData({ token, user });
         }
     }, []);
 
@@ -26,7 +28,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }, [authData.token]);
 
     const logout = () => {
-        setAuthData({ token: null });
+        setAuthData({ token: null, user: null });
     };
 
     return (

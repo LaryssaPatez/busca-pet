@@ -106,9 +106,11 @@ export default function SearchPets() {
                         <LostFoundCard
                             key={pet.idPost}
                             name={pet.petName}
+                            creator={pet.userName}
                             location={`${pet.city}/${pet.state}`}
                             status={pet.status}
                             imageUrl={IMAGE_URL + pet.imageName}
+                            idPost={pet.idPost}
                         />
                     ))
                 ) : (
