@@ -9,12 +9,12 @@ export default function useDataFromDb(url:string = `${API_URL}/post`) {
             try {
                 const response = await fetch(url);
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error('Resposta da rede não OK');
                 }
                 const data = await response.json();
                 setData(data);
             } catch (error) {
-                console.error('There was a problem with the fetch operation:', error);
+                console.error('Ocorreu um erro ao buscar os cards:', error);
             }
         };
 

@@ -65,7 +65,7 @@ export default function SearchPets() {
                 <select value={statusFilter} onChange={handleStatusChange}>
                     <option value="">Todos</option>
                     <option value="Perdido">Perdido</option>
-                    <option value="Achado">Encontrado</option>
+                    <option value="Encontrado">Encontrado</option>
                 </select>
 
                 <label>Tipo de Pet:</label>
