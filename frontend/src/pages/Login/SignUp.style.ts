@@ -59,5 +59,14 @@ export const PageWrapper = styled.div`
       cursor: pointer;
       margin-top: 1rem;
     }
+
+    .backHome {
+      position: relative;
+      top: 14%;
+      left: 90%;
+      font-size: 3rem;
+      color: ${theme.colors.primary};
+      cursor: pointer;
+    }
   }
 `;

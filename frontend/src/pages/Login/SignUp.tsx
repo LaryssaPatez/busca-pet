@@ -3,6 +3,7 @@ import { PageWrapper } from "./SignUp.style";
 import axios from 'axios';
 import { API_URL } from '../../utils/constants';
 import { useNavigate } from 'react-router-dom';
+import { IoArrowBackCircleSharp } from 'react-icons/io5';
 
 export default function SignUp() {
     const navigate = useNavigate();
@@ -39,6 +40,7 @@ export default function SignUp() {
                     <input type="password" placeholder="******" id="input-password" required value={password} onChange={(e) => setPassword(e.target.value)} />
                 </label>
                 <button type="submit">Cadastrar</button>
+                <IoArrowBackCircleSharp className='backHome' onClick={() => navigate("/")}/>
             </form>
         </PageWrapper>
     );
