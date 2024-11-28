@@ -7,11 +7,13 @@ import { useContext } from 'react';
 import { getUserFromToken } from '../../utils/auth';
 import axios from 'axios';
 import { API_URL } from '../../utils/constants';
+import { useNavigate } from 'react-router-dom';
 
 export default function LostFound({ name, creator, location, status, imageUrl, idPost }: LostFoundCardProps) {
     const { authData } = useContext(AuthContext);
     const user = authData.token ? getUserFromToken(authData.token) : null;
     const username = user ? user.username.sub : '';
+    const navigate = useNavigate();
 
     const handleDelete = async () => {
         try {
@@ -27,6 +29,7 @@ export default function LostFound({ name, creator, location, status, imageUrl, i
             });
 
             alert('Postagem deletada com sucesso.');
+            navigate(0);
         } catch (error) {
             console.error('Falha ao deletar a postagem:', error);
             alert('Falha ao deletar a postagem');
