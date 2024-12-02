@@ -1,4 +1,6 @@
-package com.edu.unisagrado.buscapet.model;
+package com.edu.unisagrado.buscapet.dto;
+
+import com.edu.unisagrado.buscapet.model.UserRole;
 
 import lombok.Getter;
 import lombok.Setter;

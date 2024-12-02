@@ -44,7 +44,6 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("post")
 public class PostController {
-
 	@Autowired
 	private PostRepository postRepository;
 	private final PostService postService;

@@ -1,4 +1,4 @@
-package com.edu.unisagrado.buscapet.model;
+package com.edu.unisagrado.buscapet.dto;
 
 public record UserLoginResponseDTO(String token) {
 

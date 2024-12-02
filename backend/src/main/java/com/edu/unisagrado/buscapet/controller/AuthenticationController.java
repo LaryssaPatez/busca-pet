@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.edu.unisagrado.buscapet.dto.UserAuthenticationDTO;
+import com.edu.unisagrado.buscapet.dto.UserLoginResponseDTO;
+import com.edu.unisagrado.buscapet.dto.UserRegisterDTO;
 import com.edu.unisagrado.buscapet.model.User;
-import com.edu.unisagrado.buscapet.model.UserAuthenticationDTO;
-import com.edu.unisagrado.buscapet.model.UserLoginResponseDTO;
-import com.edu.unisagrado.buscapet.model.UserRegisterDTO;
 import com.edu.unisagrado.buscapet.repository.UserRepository;
 import com.edu.unisagrado.buscapet.security.TokenService;
 
