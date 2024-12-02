@@ -6,6 +6,7 @@
     <img width=75 src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFBe"/>
     <img width=105 src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"/>
 </p>
+BuscaPet é um projeto desenvolvido na faculdade com o objetivo de ajudar a localizar pets perdidos e permitir que pessoas que encontram animais possam divulgá-los. A aplicação oferece uma plataforma web, onde os usuários podem buscar por seus pets desaparecidos ou postar informações sobre animais encontrados, facilitando a comunicação entre donos e pessoas que resgataram pets.
 
 ## Rodando localmente
 **Clonar o repositório do backend e frontend**
